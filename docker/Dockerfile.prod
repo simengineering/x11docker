@@ -1,0 +1,12 @@
+FROM f4a1f2c861ca:
+
+RUN yum install -y java-11-openjdk-headless.x86_64 gcc-c++ java-11-openjdk-devel java-11-openjdk-src which
+
+COPY ./ /work/onesaf
+
+WORKDIR /work/onesaf/SWR/bin/services/sys/composition
+
+ENV ANT_HOME /work/onesaf/SWR/external/ant
+ENV JAVA_HOME /usr/lib/jvm/java-11
+ENV PATH $(ANT_HOME)/bin:$(JAVA_HOME)/bin:$PATH 
+CMD ["/bin/bash"]
